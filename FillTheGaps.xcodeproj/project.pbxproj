@@ -3,16 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A82C9B6C3193F6266610BFF /* Pods_FillTheGaps_FillTheGapsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7EBDE746F218C08CBA3B53 /* Pods_FillTheGaps_FillTheGapsUITests.framework */; };
+		7DE85B2C5DF28E08B5FE40BA /* Pods_FillTheGapsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A39001CC7B7A7F35F315BD /* Pods_FillTheGapsTests.framework */; };
+		AF116C47A022CB1AAA4F7D6A /* Pods_FillTheGaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C896D0629DF17EEBAA6CECBF /* Pods_FillTheGaps.framework */; };
+		F4763BAD24C312C200E50528 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4763BAC24C312C200E50528 /* CreateEvent.swift */; };
+		F4763BB024C31A1500E50528 /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4763BAF24C31A1500E50528 /* RemoveEvent.swift */; };
+		F483212924C22EAB0016D9FC /* GetCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483212824C22EAB0016D9FC /* GetCurrentUser.swift */; };
+		F483212B24C232BA0016D9FC /* GetCalendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483212A24C232BA0016D9FC /* GetCalendars.swift */; };
 		F49FDEF724C2113200DFC570 /* FillTheGapsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDEF624C2113200DFC570 /* FillTheGapsApp.swift */; };
 		F49FDEF924C2113200DFC570 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDEF824C2113200DFC570 /* ContentView.swift */; };
 		F49FDEFB24C2113200DFC570 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49FDEFA24C2113200DFC570 /* Assets.xcassets */; };
 		F49FDEFE24C2113200DFC570 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49FDEFD24C2113200DFC570 /* Preview Assets.xcassets */; };
 		F49FDF0924C2113200DFC570 /* FillTheGapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDF0824C2113200DFC570 /* FillTheGapsTests.swift */; };
 		F49FDF1424C2113200DFC570 /* FillTheGapsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDF1324C2113200DFC570 /* FillTheGapsUITests.swift */; };
+		F49FDF2324C2124000DFC570 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F49FDF2224C2124000DFC570 /* ComposableArchitecture */; };
+		F49FDF2424C2124000DFC570 /* ComposableArchitecture in Embed Frameworks */ = {isa = PBXBuildFile; productRef = F49FDF2224C2124000DFC570 /* ComposableArchitecture */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F49FDF2724C2125200DFC570 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDF2624C2125200DFC570 /* AppState.swift */; };
+		F49FDF2B24C2186A00DFC570 /* GoogleAuthenticationControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDF2A24C2186A00DFC570 /* GoogleAuthenticationControllerWrapper.swift */; };
+		F49FDF2D24C218CF00DFC570 /* GoogleAuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDF2C24C218CF00DFC570 /* GoogleAuthenticationController.swift */; };
+		F4D5D43424C2CCC8000A97B7 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43324C2CCC8000A97B7 /* Logout.swift */; };
+		F4D5D43624C2CDC6000A97B7 /* GetCalendarEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43524C2CDC6000A97B7 /* GetCalendarEvents.swift */; };
+		F4D5D43824C2CF83000A97B7 /* ListOfEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */; };
+		F4D5D43B24C2DC40000A97B7 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43A24C2DC40000A97B7 /* Event.swift */; };
+		F4D5D43D24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43C24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +49,35 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F49FDF2524C2124100DFC570 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F49FDF2424C2124000DFC570 /* ComposableArchitecture in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0AF38598EBB200A188363F29 /* Pods-FillTheGaps-FillTheGapsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillTheGaps-FillTheGapsUITests.release.xcconfig"; path = "Target Support Files/Pods-FillTheGaps-FillTheGapsUITests/Pods-FillTheGaps-FillTheGapsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		11A39001CC7B7A7F35F315BD /* Pods_FillTheGapsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FillTheGapsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6618DBD540ACD35A11639788 /* Pods-FillTheGapsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillTheGapsTests.debug.xcconfig"; path = "Target Support Files/Pods-FillTheGapsTests/Pods-FillTheGapsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		ACB66D09034D545915B246CB /* Pods-FillTheGaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillTheGaps.release.xcconfig"; path = "Target Support Files/Pods-FillTheGaps/Pods-FillTheGaps.release.xcconfig"; sourceTree = "<group>"; };
+		B71B5487132863EF72279DBA /* Pods-FillTheGapsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillTheGapsTests.release.xcconfig"; path = "Target Support Files/Pods-FillTheGapsTests/Pods-FillTheGapsTests.release.xcconfig"; sourceTree = "<group>"; };
+		B7BE5EFD08516CCFD26E6DD6 /* Pods-FillTheGaps-FillTheGapsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillTheGaps-FillTheGapsUITests.debug.xcconfig"; path = "Target Support Files/Pods-FillTheGaps-FillTheGapsUITests/Pods-FillTheGaps-FillTheGapsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C896D0629DF17EEBAA6CECBF /* Pods_FillTheGaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FillTheGaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD7EBDE746F218C08CBA3B53 /* Pods_FillTheGaps_FillTheGapsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FillTheGaps_FillTheGapsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F07D334E09CDF15B7F377402 /* Pods-FillTheGaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillTheGaps.debug.xcconfig"; path = "Target Support Files/Pods-FillTheGaps/Pods-FillTheGaps.debug.xcconfig"; sourceTree = "<group>"; };
+		F4763BAC24C312C200E50528 /* CreateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEvent.swift; sourceTree = "<group>"; };
+		F4763BAF24C31A1500E50528 /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
+		F483212424C223CC0016D9FC /* FillTheGaps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FillTheGaps-Bridging-Header.h"; sourceTree = "<group>"; };
+		F483212824C22EAB0016D9FC /* GetCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUser.swift; sourceTree = "<group>"; };
+		F483212A24C232BA0016D9FC /* GetCalendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendars.swift; sourceTree = "<group>"; };
 		F49FDEF324C2113100DFC570 /* FillTheGaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FillTheGaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49FDEF624C2113200DFC570 /* FillTheGapsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillTheGapsApp.swift; sourceTree = "<group>"; };
 		F49FDEF824C2113200DFC570 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +90,14 @@
 		F49FDF0F24C2113200DFC570 /* FillTheGapsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FillTheGapsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49FDF1324C2113200DFC570 /* FillTheGapsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillTheGapsUITests.swift; sourceTree = "<group>"; };
 		F49FDF1524C2113200DFC570 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F49FDF2624C2125200DFC570 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		F49FDF2A24C2186A00DFC570 /* GoogleAuthenticationControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationControllerWrapper.swift; sourceTree = "<group>"; };
+		F49FDF2C24C218CF00DFC570 /* GoogleAuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationController.swift; sourceTree = "<group>"; };
+		F4D5D43324C2CCC8000A97B7 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
+		F4D5D43524C2CDC6000A97B7 /* GetCalendarEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendarEvents.swift; sourceTree = "<group>"; };
+		F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEventsView.swift; sourceTree = "<group>"; };
+		F4D5D43A24C2DC40000A97B7 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		F4D5D43C24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+GTLRCalendar_Event.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F49FDF2324C2124000DFC570 /* ComposableArchitecture in Frameworks */,
+				AF116C47A022CB1AAA4F7D6A /* Pods_FillTheGaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DE85B2C5DF28E08B5FE40BA /* Pods_FillTheGapsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +122,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A82C9B6C3193F6266610BFF /* Pods_FillTheGaps_FillTheGapsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		077790BA60A14CF470EB57EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F07D334E09CDF15B7F377402 /* Pods-FillTheGaps.debug.xcconfig */,
+				ACB66D09034D545915B246CB /* Pods-FillTheGaps.release.xcconfig */,
+				B7BE5EFD08516CCFD26E6DD6 /* Pods-FillTheGaps-FillTheGapsUITests.debug.xcconfig */,
+				0AF38598EBB200A188363F29 /* Pods-FillTheGaps-FillTheGapsUITests.release.xcconfig */,
+				6618DBD540ACD35A11639788 /* Pods-FillTheGapsTests.debug.xcconfig */,
+				B71B5487132863EF72279DBA /* Pods-FillTheGapsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B3A3EFDB2FC9B8D8AC33D9A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C896D0629DF17EEBAA6CECBF /* Pods_FillTheGaps.framework */,
+				DD7EBDE746F218C08CBA3B53 /* Pods_FillTheGaps_FillTheGapsUITests.framework */,
+				11A39001CC7B7A7F35F315BD /* Pods_FillTheGapsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4763BAE24C319EF00E50528 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F49FDEF824C2113200DFC570 /* ContentView.swift */,
+				F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F483212724C22E9E0016D9FC /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				F483212824C22EAB0016D9FC /* GetCurrentUser.swift */,
+				F483212A24C232BA0016D9FC /* GetCalendars.swift */,
+				F4D5D43524C2CDC6000A97B7 /* GetCalendarEvents.swift */,
+				F4763BAC24C312C200E50528 /* CreateEvent.swift */,
+				F4763BAF24C31A1500E50528 /* RemoveEvent.swift */,
+				F4D5D43324C2CCC8000A97B7 /* Logout.swift */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
 		F49FDEEA24C2113100DFC570 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +181,8 @@
 				F49FDF0724C2113200DFC570 /* FillTheGapsTests */,
 				F49FDF1224C2113200DFC570 /* FillTheGapsUITests */,
 				F49FDEF424C2113100DFC570 /* Products */,
+				077790BA60A14CF470EB57EF /* Pods */,
+				B3A3EFDB2FC9B8D8AC33D9A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,7 +200,11 @@
 			isa = PBXGroup;
 			children = (
 				F49FDEF624C2113200DFC570 /* FillTheGapsApp.swift */,
-				F49FDEF824C2113200DFC570 /* ContentView.swift */,
+				F49FDF2624C2125200DFC570 /* AppState.swift */,
+				F4763BAE24C319EF00E50528 /* Views */,
+				F4D5D43924C2DC3A000A97B7 /* Models */,
+				F483212724C22E9E0016D9FC /* Effects */,
+				F49FDF2E24C21A1F00DFC570 /* GoogleAuthentication */,
 				F49FDEFA24C2113200DFC570 /* Assets.xcassets */,
 				F49FDEFF24C2113200DFC570 /* Info.plist */,
 				F49FDEFC24C2113200DFC570 /* Preview Content */,
@@ -130,6 +238,33 @@
 			path = FillTheGapsUITests;
 			sourceTree = "<group>";
 		};
+		F49FDF2E24C21A1F00DFC570 /* GoogleAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				F49FDF2F24C21A2A00DFC570 /* View */,
+			);
+			path = GoogleAuthentication;
+			sourceTree = "<group>";
+		};
+		F49FDF2F24C21A2A00DFC570 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F49FDF2C24C218CF00DFC570 /* GoogleAuthenticationController.swift */,
+				F49FDF2A24C2186A00DFC570 /* GoogleAuthenticationControllerWrapper.swift */,
+				F483212424C223CC0016D9FC /* FillTheGaps-Bridging-Header.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F4D5D43924C2DC3A000A97B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4D5D43A24C2DC40000A97B7 /* Event.swift */,
+				F4D5D43C24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,15 +272,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F49FDF1824C2113200DFC570 /* Build configuration list for PBXNativeTarget "FillTheGaps" */;
 			buildPhases = (
+				4BAFCB86E8E9217AE987CB2D /* [CP] Check Pods Manifest.lock */,
 				F49FDEEF24C2113100DFC570 /* Sources */,
 				F49FDEF024C2113100DFC570 /* Frameworks */,
 				F49FDEF124C2113100DFC570 /* Resources */,
+				F49FDF2524C2124100DFC570 /* Embed Frameworks */,
+				B606EB3E2201B9BBB7A5EC6B /* [CP] Embed Pods Frameworks */,
+				334C4C2CDF5BA8507EA0B1E3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = FillTheGaps;
+			packageProductDependencies = (
+				F49FDF2224C2124000DFC570 /* ComposableArchitecture */,
+			);
 			productName = FillTheGaps;
 			productReference = F49FDEF324C2113100DFC570 /* FillTheGaps.app */;
 			productType = "com.apple.product-type.application";
@@ -154,6 +296,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F49FDF1B24C2113200DFC570 /* Build configuration list for PBXNativeTarget "FillTheGapsTests" */;
 			buildPhases = (
+				F6FE84B238E31D159670842A /* [CP] Check Pods Manifest.lock */,
 				F49FDF0024C2113200DFC570 /* Sources */,
 				F49FDF0124C2113200DFC570 /* Frameworks */,
 				F49FDF0224C2113200DFC570 /* Resources */,
@@ -172,9 +315,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F49FDF1E24C2113200DFC570 /* Build configuration list for PBXNativeTarget "FillTheGapsUITests" */;
 			buildPhases = (
+				3CD0A223CD8D8779DFB50481 /* [CP] Check Pods Manifest.lock */,
 				F49FDF0B24C2113200DFC570 /* Sources */,
 				F49FDF0C24C2113200DFC570 /* Frameworks */,
 				F49FDF0D24C2113200DFC570 /* Resources */,
+				A29A194952FD8D863E3A05F4 /* [CP] Embed Pods Frameworks */,
+				F29BAABB31F1534341079F64 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,6 +343,7 @@
 				TargetAttributes = {
 					F49FDEF224C2113100DFC570 = {
 						CreatedOnToolsVersion = 12.0;
+						LastSwiftMigration = 1200;
 					};
 					F49FDF0324C2113200DFC570 = {
 						CreatedOnToolsVersion = 12.0;
@@ -217,6 +364,9 @@
 				Base,
 			);
 			mainGroup = F49FDEEA24C2113100DFC570;
+			packageReferences = (
+				F49FDF2124C2124000DFC570 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = F49FDEF424C2113100DFC570 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -254,13 +404,162 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		334C4C2CDF5BA8507EA0B1E3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps/Pods-FillTheGaps-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps/Pods-FillTheGaps-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps/Pods-FillTheGaps-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CD0A223CD8D8779DFB50481 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FillTheGaps-FillTheGapsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BAFCB86E8E9217AE987CB2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FillTheGaps-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A29A194952FD8D863E3A05F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps-FillTheGapsUITests/Pods-FillTheGaps-FillTheGapsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps-FillTheGapsUITests/Pods-FillTheGaps-FillTheGapsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps-FillTheGapsUITests/Pods-FillTheGaps-FillTheGapsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B606EB3E2201B9BBB7A5EC6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps/Pods-FillTheGaps-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps/Pods-FillTheGaps-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps/Pods-FillTheGaps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F29BAABB31F1534341079F64 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps-FillTheGapsUITests/Pods-FillTheGaps-FillTheGapsUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps-FillTheGapsUITests/Pods-FillTheGaps-FillTheGapsUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillTheGaps-FillTheGapsUITests/Pods-FillTheGaps-FillTheGapsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6FE84B238E31D159670842A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FillTheGapsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F49FDEEF24C2113100DFC570 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F49FDF2D24C218CF00DFC570 /* GoogleAuthenticationController.swift in Sources */,
+				F4D5D43B24C2DC40000A97B7 /* Event.swift in Sources */,
+				F4763BAD24C312C200E50528 /* CreateEvent.swift in Sources */,
+				F4D5D43D24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift in Sources */,
+				F4D5D43424C2CCC8000A97B7 /* Logout.swift in Sources */,
+				F483212924C22EAB0016D9FC /* GetCurrentUser.swift in Sources */,
+				F49FDF2B24C2186A00DFC570 /* GoogleAuthenticationControllerWrapper.swift in Sources */,
+				F483212B24C232BA0016D9FC /* GetCalendars.swift in Sources */,
+				F49FDF2724C2125200DFC570 /* AppState.swift in Sources */,
 				F49FDEF924C2113200DFC570 /* ContentView.swift in Sources */,
+				F4763BB024C31A1500E50528 /* RemoveEvent.swift in Sources */,
 				F49FDEF724C2113200DFC570 /* FillTheGapsApp.swift in Sources */,
+				F4D5D43824C2CF83000A97B7 /* ListOfEventsView.swift in Sources */,
+				F4D5D43624C2CDC6000A97B7 /* GetCalendarEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,9 +713,11 @@
 		};
 		F49FDF1924C2113200DFC570 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F07D334E09CDF15B7F377402 /* Pods-FillTheGaps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FillTheGaps/Preview Content\"";
 				DEVELOPMENT_TEAM = 9MWQQ54CZQ;
@@ -429,6 +730,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.albertomoral.FillTheGaps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FillTheGaps/GoogleAuthentication/View/FillTheGaps-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -436,9 +739,11 @@
 		};
 		F49FDF1A24C2113200DFC570 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACB66D09034D545915B246CB /* Pods-FillTheGaps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FillTheGaps/Preview Content\"";
 				DEVELOPMENT_TEAM = 9MWQQ54CZQ;
@@ -451,6 +756,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.albertomoral.FillTheGaps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FillTheGaps/GoogleAuthentication/View/FillTheGaps-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -458,6 +764,7 @@
 		};
 		F49FDF1C24C2113200DFC570 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6618DBD540ACD35A11639788 /* Pods-FillTheGapsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -480,6 +787,7 @@
 		};
 		F49FDF1D24C2113200DFC570 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B71B5487132863EF72279DBA /* Pods-FillTheGapsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -502,6 +810,7 @@
 		};
 		F49FDF1F24C2113200DFC570 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7BE5EFD08516CCFD26E6DD6 /* Pods-FillTheGaps-FillTheGapsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -522,6 +831,7 @@
 		};
 		F49FDF2024C2113200DFC570 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AF38598EBB200A188363F29 /* Pods-FillTheGaps-FillTheGapsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -580,6 +890,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F49FDF2124C2124000DFC570 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MoralAlberto/swift-composable-architecture";
+			requirement = {
+				kind = revision;
+				revision = 739cf04b43bca80003904e4ae30d290333d9107f;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F49FDF2224C2124000DFC570 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F49FDF2124C2124000DFC570 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F49FDEEB24C2113100DFC570 /* Project object */;
 }
