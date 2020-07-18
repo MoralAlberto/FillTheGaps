@@ -12,6 +12,11 @@
 		AF116C47A022CB1AAA4F7D6A /* Pods_FillTheGaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C896D0629DF17EEBAA6CECBF /* Pods_FillTheGaps.framework */; };
 		F4763BAD24C312C200E50528 /* CreateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4763BAC24C312C200E50528 /* CreateEvent.swift */; };
 		F4763BB024C31A1500E50528 /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4763BAF24C31A1500E50528 /* RemoveEvent.swift */; };
+		F4763BB224C3262200E50528 /* EventReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4763BB124C3262200E50528 /* EventReducer.swift */; };
+		F4763BB424C34A8300E50528 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4763BB324C34A8300E50528 /* AppAction.swift */; };
+		F4763BB624C34A9A00E50528 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4763BB524C34A9A00E50528 /* AppEnvironment.swift */; };
+		F4763BB824C34AB500E50528 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4763BB724C34AB500E50528 /* AppReducer.swift */; };
+		F4763BBA24C34F9B00E50528 /* AppCombineReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4763BB924C34F9B00E50528 /* AppCombineReducer.swift */; };
 		F483212924C22EAB0016D9FC /* GetCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483212824C22EAB0016D9FC /* GetCurrentUser.swift */; };
 		F483212B24C232BA0016D9FC /* GetCalendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483212A24C232BA0016D9FC /* GetCalendars.swift */; };
 		F49FDEF724C2113200DFC570 /* FillTheGapsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDEF624C2113200DFC570 /* FillTheGapsApp.swift */; };
@@ -75,6 +80,11 @@
 		F07D334E09CDF15B7F377402 /* Pods-FillTheGaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillTheGaps.debug.xcconfig"; path = "Target Support Files/Pods-FillTheGaps/Pods-FillTheGaps.debug.xcconfig"; sourceTree = "<group>"; };
 		F4763BAC24C312C200E50528 /* CreateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEvent.swift; sourceTree = "<group>"; };
 		F4763BAF24C31A1500E50528 /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
+		F4763BB124C3262200E50528 /* EventReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventReducer.swift; sourceTree = "<group>"; };
+		F4763BB324C34A8300E50528 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		F4763BB524C34A9A00E50528 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		F4763BB724C34AB500E50528 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		F4763BB924C34F9B00E50528 /* AppCombineReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCombineReducer.swift; sourceTree = "<group>"; };
 		F483212424C223CC0016D9FC /* FillTheGaps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FillTheGaps-Bridging-Header.h"; sourceTree = "<group>"; };
 		F483212824C22EAB0016D9FC /* GetCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUser.swift; sourceTree = "<group>"; };
 		F483212A24C232BA0016D9FC /* GetCalendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendars.swift; sourceTree = "<group>"; };
@@ -155,8 +165,8 @@
 		F4763BAE24C319EF00E50528 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F49FDEF824C2113200DFC570 /* ContentView.swift */,
 				F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */,
+				F4763BB124C3262200E50528 /* EventReducer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,7 +210,12 @@
 			isa = PBXGroup;
 			children = (
 				F49FDEF624C2113200DFC570 /* FillTheGapsApp.swift */,
+				F4763BB924C34F9B00E50528 /* AppCombineReducer.swift */,
 				F49FDF2624C2125200DFC570 /* AppState.swift */,
+				F4763BB324C34A8300E50528 /* AppAction.swift */,
+				F4763BB524C34A9A00E50528 /* AppEnvironment.swift */,
+				F4763BB724C34AB500E50528 /* AppReducer.swift */,
+				F49FDEF824C2113200DFC570 /* ContentView.swift */,
 				F4763BAE24C319EF00E50528 /* Views */,
 				F4D5D43924C2DC3A000A97B7 /* Models */,
 				F483212724C22E9E0016D9FC /* Effects */,
@@ -550,16 +565,21 @@
 				F4D5D43B24C2DC40000A97B7 /* Event.swift in Sources */,
 				F4763BAD24C312C200E50528 /* CreateEvent.swift in Sources */,
 				F4D5D43D24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift in Sources */,
+				F4763BB224C3262200E50528 /* EventReducer.swift in Sources */,
 				F4D5D43424C2CCC8000A97B7 /* Logout.swift in Sources */,
 				F483212924C22EAB0016D9FC /* GetCurrentUser.swift in Sources */,
 				F49FDF2B24C2186A00DFC570 /* GoogleAuthenticationControllerWrapper.swift in Sources */,
 				F483212B24C232BA0016D9FC /* GetCalendars.swift in Sources */,
+				F4763BB424C34A8300E50528 /* AppAction.swift in Sources */,
 				F49FDF2724C2125200DFC570 /* AppState.swift in Sources */,
+				F4763BBA24C34F9B00E50528 /* AppCombineReducer.swift in Sources */,
 				F49FDEF924C2113200DFC570 /* ContentView.swift in Sources */,
+				F4763BB824C34AB500E50528 /* AppReducer.swift in Sources */,
 				F4763BB024C31A1500E50528 /* RemoveEvent.swift in Sources */,
 				F49FDEF724C2113200DFC570 /* FillTheGapsApp.swift in Sources */,
 				F4D5D43824C2CF83000A97B7 /* ListOfEventsView.swift in Sources */,
 				F4D5D43624C2CDC6000A97B7 /* GetCalendarEvents.swift in Sources */,
+				F4763BB624C34A9A00E50528 /* AppEnvironment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

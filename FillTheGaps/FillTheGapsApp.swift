@@ -8,13 +8,13 @@ struct FillTheGapsApp: App {
             ContentView(
                 store: Store(
                     initialState: AppState(),
-                    reducer: appReducer,
-                    environment: AppEnvironment(
+                    reducer: appCombineReducer,
+                    environment: AppCombineEnvironment(
                         getCurrentUser: getCurrentUserEffect,
                         getCalendars: getCalendarsEffect,
                         getCalendarEvents: getCalendarEventsEffect,
                         createEvent: createEventEffect,
-                        removeEvent: removeEventEffect(inCalendarId:eventId:),
+                        removeEvent: removeEventEffect,
                         logout: logoutEffect)
                 )
             )
