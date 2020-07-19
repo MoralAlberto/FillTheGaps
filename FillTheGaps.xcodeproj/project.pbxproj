@@ -33,6 +33,8 @@
 		F4D5D43824C2CF83000A97B7 /* ListOfEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */; };
 		F4D5D43B24C2DC40000A97B7 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43A24C2DC40000A97B7 /* Event.swift */; };
 		F4D5D43D24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43C24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift */; };
+		F4ED7AE324C4BA0B00D708A3 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ED7AE224C4BA0B00D708A3 /* Calendar.swift */; };
+		F4ED7AE724C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ED7AE624C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEventsView.swift; sourceTree = "<group>"; };
 		F4D5D43A24C2DC40000A97B7 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		F4D5D43C24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+GTLRCalendar_Event.swift"; sourceTree = "<group>"; };
+		F4ED7AE224C4BA0B00D708A3 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		F4ED7AE624C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GTLRCalendar_CalendarListEntry.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,10 +288,28 @@
 		F4D5D43924C2DC3A000A97B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F4ED7AE524C4BA2C00D708A3 /* Calendar */,
+				F4ED7AE424C4BA1800D708A3 /* Event */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F4ED7AE424C4BA1800D708A3 /* Event */ = {
+			isa = PBXGroup;
+			children = (
 				F4D5D43A24C2DC40000A97B7 /* Event.swift */,
 				F4D5D43C24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift */,
 			);
-			path = Models;
+			path = Event;
+			sourceTree = "<group>";
+		};
+		F4ED7AE524C4BA2C00D708A3 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				F4ED7AE224C4BA0B00D708A3 /* Calendar.swift */,
+				F4ED7AE624C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -572,9 +594,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F49FDF2D24C218CF00DFC570 /* GoogleAuthenticationController.swift in Sources */,
+				F4ED7AE324C4BA0B00D708A3 /* Calendar.swift in Sources */,
 				F42B882124C4314000AB8B75 /* SessionReducer.swift in Sources */,
 				F4D5D43B24C2DC40000A97B7 /* Event.swift in Sources */,
 				F4763BAD24C312C200E50528 /* CreateEvent.swift in Sources */,
+				F4ED7AE724C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift in Sources */,
 				F4D5D43D24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift in Sources */,
 				F4763BB224C3262200E50528 /* EventReducer.swift in Sources */,
 				F4D5D43424C2CCC8000A97B7 /* Logout.swift in Sources */,

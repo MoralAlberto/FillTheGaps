@@ -26,7 +26,7 @@ struct ListOfEventsView: View {
         VStack {
             Button("Create random Event") {
                 viewStore.send(.tapOnCreateEventInCalendar(calendarId: calendarId))
-            }
+            }.padding()
             List(viewStore.events, id: \.self) { event in
                 HStack {
                     Text(event.name)

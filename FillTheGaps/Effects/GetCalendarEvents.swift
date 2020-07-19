@@ -18,7 +18,7 @@ func getCalendarEventsEffect(calendarId: String) -> Effect<[Event], Never> {
         
         service.authorizer = authentication.fetcherAuthorizer()
     
-        let startDateTime = GTLRDateTime(date: Calendar.current.startOfDay(for: Date()))
+        let startDateTime = GTLRDateTime(date: Foundation.Calendar.current.startOfDay(for: Date()))
         let endDateTime = GTLRDateTime(date: Date().addingTimeInterval(60*60*24*4))
         
         let eventsListQuery = GTLRCalendarQuery_EventsList.query(withCalendarId: calendarId)

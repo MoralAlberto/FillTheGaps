@@ -6,7 +6,7 @@ import ComposableArchitecture
 struct AppState: Equatable {
     var user: String = ""
     var currentCalendar = ""
-    var calendars: [String] = []
+    var calendars: [Calendar] = []
     var events: [Event] = []
     var presentSheetInCalendarView: Bool = false
     var calendarViewSheet: CalendarViewSheet = .listOfEvents
@@ -70,7 +70,7 @@ enum AppAction {
 
 struct AppEnvironment {
     var getCurrentUser: () -> Effect<String, Never>
-    var getCalendars: () -> Effect<[String], Never>
+    var getCalendars: () -> Effect<[Calendar], Never>
     var getCalendarEvents: (_ calendarId: String) -> Effect<[Event], Never>
     var createEvent: (String) -> Effect<Bool, Never>
     var removeEvent:  (String, String) -> Effect<Bool, Never>

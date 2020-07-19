@@ -8,7 +8,7 @@ enum CalendarViewSheet {
 struct ListOfCalendarsView: View {
     struct ViewState: Equatable {
         let user: String
-        let calendars: [String]
+        let calendars: [Calendar]
         let currentCalendar: String
         let presentSheetInCalendarView: Bool
         let calendarViewSheet: CalendarViewSheet
@@ -40,8 +40,8 @@ struct ListOfCalendarsView: View {
                 } else {
                     List {
                         ForEach(viewStore.calendars, id: \.self) { calendar in
-                            Text(calendar).onTapGesture {
-                                viewStore.send(.tapOnCalendar(calendarId: calendar))
+                            Text(calendar.summary).onTapGesture {
+                                viewStore.send(.tapOnCalendar(calendarId: calendar.id))
                             }
                         }
                     }.onAppear {

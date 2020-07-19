@@ -4,7 +4,7 @@ import GoogleSignIn
 import Combine
 import GoogleAPIClientForREST
 
-func getCalendarsEffect() -> Effect<[String], Never> {
+func getCalendarsEffect() -> Effect<[Calendar], Never> {
     return Future { callback in
         let service = GTLRCalendarService()
         service.shouldFetchNextPages = true
@@ -26,7 +26,7 @@ func getCalendarsEffect() -> Effect<[String], Never> {
                 return
             }
 
-            let calendarsIdentifiers = items.compactMap { $0.identifier }.sorted()
+            let calendarsIdentifiers = items.compactMap(Calendar.init(googleCalendar:)).sorted(by: { $0.id > $1.id })
             callback(.success(calendarsIdentifiers))
         })
     }.eraseToEffect()
