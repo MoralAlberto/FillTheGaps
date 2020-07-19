@@ -3,6 +3,8 @@ import ComposableArchitecture
 struct EventFeatureState: Equatable {
     var currentCalendar: String
     var events: [Event]
+    var dateOfNewEvent: Date
+    var numberOfHoursNewEvent: Int = 4
 }
 
 enum EventAction: Equatable {
@@ -12,11 +14,13 @@ enum EventAction: Equatable {
     case responseAddEvent(Bool)
     case tapOnRemoveEvent(eventId: String, calendarId: String)
     case responseRemoveEvent(Bool)
+    case dateOfNewEventChanged(date: Date)
+    case numberOfHoursChanged(numberOfHours: Int)
 }
 
 struct EventEnvironment {
     var getCalendarEvents: (_ calendarId: String) -> Effect<[Event], Never>
-    var createEvent: (String) -> Effect<Bool, Never>
+    var createEvent: (String, Date, Int) -> Effect<Bool, Never>
     var removeEvent: (String, String) -> Effect<Bool, Never>
 }
 
@@ -34,11 +38,10 @@ let eventReducer = Reducer<EventFeatureState, EventAction, EventEnvironment> { s
         
     case .responseEventsInCalendar(let result):
         state.events = result
-        return .none
         
     case .createEventInCalendar(calendarId: let calendarId):
         
-        return environment.createEvent(calendarId)
+        return environment.createEvent(calendarId, state.dateOfNewEvent, state.numberOfHoursNewEvent)
             .map(EventAction.responseAddEvent)
             .receive(on: DispatchQueue.main)
             .eraseToEffect()
@@ -54,5 +57,15 @@ let eventReducer = Reducer<EventFeatureState, EventAction, EventEnvironment> { s
             
     case .responseRemoveEvent(let result):
         return getCalendarEvents()
+        
+    case .dateOfNewEventChanged(date: let date):
+        print("New Date \(date)")
+        state.dateOfNewEvent = date
+        
+    case .numberOfHoursChanged(numberOfHours: let numberOfHours):
+        print("Number \(numberOfHours)")
+        state.numberOfHoursNewEvent = numberOfHours
+    
     }
+    return .none
 }

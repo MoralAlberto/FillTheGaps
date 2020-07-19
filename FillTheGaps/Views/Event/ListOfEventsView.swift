@@ -6,12 +6,17 @@ struct ListOfEventsView: View {
     struct ViewState: Equatable {
         let currentCalendar: String
         let events: [Event]
+        let dateOfNewEvent: Date
+        let numberOfHoursNewEvent: Int
     }
     
     enum Action {
         case onViewDidLoad(calendarId: String)
         case tapOnCreateEventInCalendar(calendarId: String)
         case tapOnRemoveEvent(eventId: String, calendarId: String)
+        case dateOfNewEventChanged(Date)
+        case numberOfHoursChanged(Int)
+        
     }
     
     private let calendarId: String
@@ -24,9 +29,10 @@ struct ListOfEventsView: View {
     
     var body: some View {
         VStack {
-            Button("Create random Event") {
-                viewStore.send(.tapOnCreateEventInCalendar(calendarId: calendarId))
-            }.padding()
+            Text("List of Events")
+                .font(.system(size: 18, weight: .bold))
+                .underline()
+                .padding()
             List(viewStore.events, id: \.self) { event in
                 HStack {
                     Text(event.name)
@@ -35,7 +41,27 @@ struct ListOfEventsView: View {
                         viewStore.send(.tapOnRemoveEvent(eventId: event.id, calendarId: calendarId))
                     }
                 }
-            }.onAppear {
+            }
+            
+            Form {
+                DatePicker("Choose date",
+                           selection: viewStore.binding(get: \.dateOfNewEvent,
+                                                        send: Action.dateOfNewEventChanged))
+                Stepper("Number of Hours \(viewStore.numberOfHoursNewEvent)",
+                        value: viewStore.binding(get: \.numberOfHoursNewEvent,
+                                                 send: Action.numberOfHoursChanged),
+                        in: 1...8)
+                HStack {
+                    Spacer()
+                    Button("Create Event") {
+                        viewStore.send(.tapOnCreateEventInCalendar(calendarId: calendarId))
+                    }
+                    Spacer()
+                }.padding()
+            }
+            
+            Spacer()
+            .onAppear {
                 viewStore.send(.onViewDidLoad(calendarId: calendarId))
             }
         }
@@ -47,7 +73,9 @@ struct ListOfEventsView: View {
 extension EventFeatureState {
     var view: ListOfEventsView.ViewState {
         .init(currentCalendar: currentCalendar,
-              events: events)
+              events: events,
+              dateOfNewEvent: dateOfNewEvent,
+              numberOfHoursNewEvent: numberOfHoursNewEvent)
     }
 }
 
@@ -60,6 +88,10 @@ extension EventAction {
             return .createEventInCalendar(calendarId: calendarId)
         case .tapOnRemoveEvent(eventId: let eventId, calendarId: let calendarId):
             return .tapOnRemoveEvent(eventId: eventId, calendarId: calendarId)
+        case .dateOfNewEventChanged(let date):
+            return .dateOfNewEventChanged(date: date)
+        case .numberOfHoursChanged(let numberOfHours):
+            return .numberOfHoursChanged(numberOfHours: numberOfHours)
         }
     }
 }

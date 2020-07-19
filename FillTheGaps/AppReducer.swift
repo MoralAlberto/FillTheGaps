@@ -10,6 +10,8 @@ struct AppState: Equatable {
     var events: [Event] = []
     var presentSheetInCalendarView: Bool = false
     var calendarViewSheet: CalendarViewSheet = .listOfEvents
+    var dateOfNewEvent: Date = Date()
+    var numberOfHoursNewEvent: Int = 4
 }
 
 extension AppState {
@@ -28,12 +30,16 @@ extension AppState {
     var event: EventFeatureState {
         get {
             .init(currentCalendar: self.currentCalendar,
-                              events: self.events)
+                  events: self.events,
+                  dateOfNewEvent: self.dateOfNewEvent,
+                  numberOfHoursNewEvent: self.numberOfHoursNewEvent)
         }
         
         set {
             self.currentCalendar = newValue.currentCalendar
             self.events = newValue.events
+            self.dateOfNewEvent = newValue.dateOfNewEvent
+            self.numberOfHoursNewEvent = newValue.numberOfHoursNewEvent
         }
     }
 }
@@ -72,7 +78,7 @@ struct AppEnvironment {
     var getCurrentUser: () -> Effect<String, Never>
     var getCalendars: () -> Effect<[Calendar], Never>
     var getCalendarEvents: (_ calendarId: String) -> Effect<[Event], Never>
-    var createEvent: (String) -> Effect<Bool, Never>
+    var createEvent: (String, Date, Int) -> Effect<Bool, Never>
     var removeEvent:  (String, String) -> Effect<Bool, Never>
     var logout: () -> Effect<Bool, Never>
 }

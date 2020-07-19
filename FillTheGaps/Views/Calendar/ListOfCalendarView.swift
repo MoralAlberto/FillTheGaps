@@ -38,6 +38,10 @@ struct ListOfCalendarsView: View {
                             action: AppAction.session)
                     )
                 } else {
+                    Text("List of Calendars")
+                        .font(.system(size: 18, weight: .bold))
+                        .underline()
+                        .padding()
                     List {
                         ForEach(viewStore.calendars, id: \.self) { calendar in
                             Text(calendar.summary).onTapGesture {
