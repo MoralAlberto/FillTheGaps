@@ -5,7 +5,7 @@ import ComposableArchitecture
 struct FillTheGapsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(
+            ListOfCalendarsView(
                 store: Store(
                     initialState: AppState(),
                     reducer: appCombineReducer,

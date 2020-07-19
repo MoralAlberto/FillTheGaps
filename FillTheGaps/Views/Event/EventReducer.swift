@@ -7,7 +7,7 @@ struct EventFeatureState: Equatable {
 
 enum EventAction: Equatable {
     case loadEventsInCalendar(calendarId: String)
-    case calendarEventsResponse([Event])
+    case responseEventsInCalendar([Event])
     case createEventInCalendar(calendarId: String)
     case responseAddEvent(Bool)
     case tapOnRemoveEvent(eventId: String, calendarId: String)
@@ -21,17 +21,19 @@ struct EventEnvironment {
 }
 
 let eventReducer = Reducer<EventFeatureState, EventAction, EventEnvironment> { state, action, environment in
-    switch action {
+    func getCalendarEvents() -> Effect<EventAction, Never> {
+        return environment.getCalendarEvents(state.currentCalendar)
+                .map(EventAction.responseEventsInCalendar)
+                .receive(on: DispatchQueue.main)
+                .eraseToEffect()
+    }
     
+    switch action {
     case .loadEventsInCalendar(calendarId: let calendarId):
-        return environment.getCalendarEvents(calendarId)
-            .map(EventAction.calendarEventsResponse)
-            .receive(on: DispatchQueue.main)
-            .eraseToEffect()
+        return getCalendarEvents()
         
-    case .calendarEventsResponse(let result):
+    case .responseEventsInCalendar(let result):
         state.events = result
-        
         return .none
         
     case .createEventInCalendar(calendarId: let calendarId):
@@ -42,34 +44,15 @@ let eventReducer = Reducer<EventFeatureState, EventAction, EventEnvironment> { s
             .eraseToEffect()
     
     case .responseAddEvent(let result):
-        if result {
-            print("Success")
-        } else {
-            print("Error")
-        }
-        
-        return environment.getCalendarEvents(state.currentCalendar)
-            .map(EventAction.calendarEventsResponse)
-            .receive(on: DispatchQueue.main)
-            .eraseToEffect()
+        return getCalendarEvents()
         
     case .tapOnRemoveEvent(eventId: let eventId, calendarId: let calendarId):
-    
         return environment.removeEvent(calendarId, eventId)
             .map(EventAction.responseRemoveEvent)
             .receive(on: DispatchQueue.main)
             .eraseToEffect()
             
     case .responseRemoveEvent(let result):
-        if result {
-            print("Success")
-        } else {
-            print("Error")
-        }
-        
-        return environment.getCalendarEvents(state.currentCalendar)
-            .map(EventAction.calendarEventsResponse)
-            .receive(on: DispatchQueue.main)
-            .eraseToEffect()
+        return getCalendarEvents()
     }
 }

@@ -19,8 +19,9 @@
 		F4763BBA24C34F9B00E50528 /* AppCombineReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4763BB924C34F9B00E50528 /* AppCombineReducer.swift */; };
 		F483212924C22EAB0016D9FC /* GetCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483212824C22EAB0016D9FC /* GetCurrentUser.swift */; };
 		F483212B24C232BA0016D9FC /* GetCalendars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483212A24C232BA0016D9FC /* GetCalendars.swift */; };
+		F48825FC24C384E200E20E77 /* CalendarReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48825FB24C384E200E20E77 /* CalendarReducer.swift */; };
 		F49FDEF724C2113200DFC570 /* FillTheGapsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDEF624C2113200DFC570 /* FillTheGapsApp.swift */; };
-		F49FDEF924C2113200DFC570 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDEF824C2113200DFC570 /* ContentView.swift */; };
+		F49FDEF924C2113200DFC570 /* ListOfCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDEF824C2113200DFC570 /* ListOfCalendarView.swift */; };
 		F49FDEFB24C2113200DFC570 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49FDEFA24C2113200DFC570 /* Assets.xcassets */; };
 		F49FDEFE24C2113200DFC570 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49FDEFD24C2113200DFC570 /* Preview Assets.xcassets */; };
 		F49FDF0924C2113200DFC570 /* FillTheGapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49FDF0824C2113200DFC570 /* FillTheGapsTests.swift */; };
@@ -88,9 +89,10 @@
 		F483212424C223CC0016D9FC /* FillTheGaps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FillTheGaps-Bridging-Header.h"; sourceTree = "<group>"; };
 		F483212824C22EAB0016D9FC /* GetCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUser.swift; sourceTree = "<group>"; };
 		F483212A24C232BA0016D9FC /* GetCalendars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendars.swift; sourceTree = "<group>"; };
+		F48825FB24C384E200E20E77 /* CalendarReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarReducer.swift; sourceTree = "<group>"; };
 		F49FDEF324C2113100DFC570 /* FillTheGaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FillTheGaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49FDEF624C2113200DFC570 /* FillTheGapsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillTheGapsApp.swift; sourceTree = "<group>"; };
-		F49FDEF824C2113200DFC570 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F49FDEF824C2113200DFC570 /* ListOfCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfCalendarView.swift; sourceTree = "<group>"; };
 		F49FDEFA24C2113200DFC570 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F49FDEFD24C2113200DFC570 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F49FDEFF24C2113200DFC570 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -165,8 +167,8 @@
 		F4763BAE24C319EF00E50528 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */,
-				F4763BB124C3262200E50528 /* EventReducer.swift */,
+				F48825FE24C3850500E20E77 /* Calendar */,
+				F48825FD24C384FA00E20E77 /* Event */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +184,24 @@
 				F4D5D43324C2CCC8000A97B7 /* Logout.swift */,
 			);
 			path = Effects;
+			sourceTree = "<group>";
+		};
+		F48825FD24C384FA00E20E77 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */,
+				F4763BB124C3262200E50528 /* EventReducer.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		F48825FE24C3850500E20E77 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				F49FDEF824C2113200DFC570 /* ListOfCalendarView.swift */,
+				F48825FB24C384E200E20E77 /* CalendarReducer.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		F49FDEEA24C2113100DFC570 = {
@@ -215,7 +235,6 @@
 				F4763BB324C34A8300E50528 /* AppAction.swift */,
 				F4763BB524C34A9A00E50528 /* AppEnvironment.swift */,
 				F4763BB724C34AB500E50528 /* AppReducer.swift */,
-				F49FDEF824C2113200DFC570 /* ContentView.swift */,
 				F4763BAE24C319EF00E50528 /* Views */,
 				F4D5D43924C2DC3A000A97B7 /* Models */,
 				F483212724C22E9E0016D9FC /* Effects */,
@@ -573,7 +592,8 @@
 				F4763BB424C34A8300E50528 /* AppAction.swift in Sources */,
 				F49FDF2724C2125200DFC570 /* AppState.swift in Sources */,
 				F4763BBA24C34F9B00E50528 /* AppCombineReducer.swift in Sources */,
-				F49FDEF924C2113200DFC570 /* ContentView.swift in Sources */,
+				F48825FC24C384E200E20E77 /* CalendarReducer.swift in Sources */,
+				F49FDEF924C2113200DFC570 /* ListOfCalendarView.swift in Sources */,
 				F4763BB824C34AB500E50528 /* AppReducer.swift in Sources */,
 				F4763BB024C31A1500E50528 /* RemoveEvent.swift in Sources */,
 				F49FDEF724C2113200DFC570 /* FillTheGapsApp.swift in Sources */,

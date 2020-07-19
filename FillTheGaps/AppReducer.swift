@@ -12,21 +12,12 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
     case .currentUserResponse(let currentUser):
         state.user = currentUser
         
-        return environment.getCalendars()
-            .map(AppAction.listOfCalendarsResponse)
-            .receive(on: DispatchQueue.main)
-            .eraseToEffect()
+        return .none
         
     case .authenticatedWithGoogleResponse(let currentUser):
         state.user = currentUser
         
-        return environment.getCalendars()
-            .map(AppAction.listOfCalendarsResponse)
-            .receive(on: DispatchQueue.main)
-            .eraseToEffect()
-    
-    case .listOfCalendarsResponse(let calendars):
-        state.calendars = calendars
+        return .none
         
     case .tapOnLogout:
         return environment.logout()
@@ -38,20 +29,14 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, e
         if result {
             state.user = ""
         }
-        
-    case .tapOnCalendar(calendarId: let calendarId):
-        state.currentCalendar = calendarId
-        state.presentSheetInContentView = true
-        
-    case .dismissSheetInContentView:
-        state.presentSheetInContentView = false
-        state.events = []
-        state.currentCalendar = ""
-    
-        // TODO: Remove this event case
+            
     case .event(_):
+        return .none
+    case .calendar(_):
         return .none
     }
     
     return .none
 }
+
+// Create Session Reducer

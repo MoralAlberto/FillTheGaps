@@ -20,13 +20,13 @@ func createEventEffect(inCalendarId calendarId: String) -> Effect<Bool, Never> {
   
         let event = GTLRCalendar_Event()
         event.summary = "Fill the Gap 2"
-        event.descriptionProperty = "I want to work in these hours"
+        event.descriptionProperty = "Description Example 🤓"
         event.visibility = "confidential"
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        let startDate = dateFormatter.date(from: "18/07/2020 15:00")
-        let endDate = dateFormatter.date(from: "18/07/2020 15:30")
+        let startDate = dateFormatter.date(from: "19/07/2020 15:00")
+        let endDate = dateFormatter.date(from: "19/07/2020 15:30")
         
         guard let toBuildDateStart = startDate, let toBuildDateEnd = endDate else {
             return callback(.success(false))
