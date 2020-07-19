@@ -1,42 +1,116 @@
-import ComposableArchitecture
 import Foundation
+import ComposableArchitecture
 
-let appReducer = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
-    switch action {
-    case .viewDidLoad:
-        return environment.getCurrentUser()
-                .map(AppAction.currentUserResponse)
-                .receive(on: DispatchQueue.main)
-                .eraseToEffect()
-        
-    case .currentUserResponse(let currentUser):
-        state.user = currentUser
-        
-        return .none
-        
-    case .authenticatedWithGoogleResponse(let currentUser):
-        state.user = currentUser
-        
-        return .none
-        
-    case .tapOnLogout:
-        return environment.logout()
-            .map(AppAction.logoutResponse)
-            .receive(on: DispatchQueue.main)
-            .eraseToEffect()
-        
-    case .logoutResponse(let result):
-        if result {
-            state.user = ""
-        }
-            
-    case .event(_):
-        return .none
-    case .calendar(_):
-        return .none
-    }
-    
-    return .none
+/* App State */
+
+struct AppState: Equatable {
+    var user: String = ""
+    var currentCalendar = ""
+    var calendars: [String] = []
+    var events: [Event] = []
+    var presentSheetInCalendarView: Bool = false
+    var calendarViewSheet: CalendarViewSheet = .listOfEvents
 }
 
-// Create Session Reducer
+extension AppState {
+    var session: SessionFeatureState {
+        get {
+            .init(user: self.user)
+        }
+        
+        set {
+            self.user = newValue.user
+        }
+    }
+}
+
+extension AppState {
+    var event: EventFeatureState {
+        get {
+            .init(currentCalendar: self.currentCalendar,
+                              events: self.events)
+        }
+        
+        set {
+            self.currentCalendar = newValue.currentCalendar
+            self.events = newValue.events
+        }
+    }
+}
+
+extension AppState {
+    var calendar: CalendarFeatureState {
+        get {
+            .init(user: self.user,
+                  events: self.events,
+                  calendars: self.calendars,
+                  currentCalendar: self.currentCalendar,
+                  presentSheetInCalendarView: self.presentSheetInCalendarView,
+                  calendarViewSheet: self.calendarViewSheet)
+        }
+        
+        set {
+            self.user = newValue.user
+            self.events = newValue.events
+            self.calendars = newValue.calendars
+            self.currentCalendar = newValue.currentCalendar
+            self.presentSheetInCalendarView = newValue.presentSheetInCalendarView
+            self.calendarViewSheet = newValue.calendarViewSheet
+        }
+    }
+}
+
+/* App Action */
+
+enum AppAction {
+    case session(SessionAction)
+    case calendar(CalendarAction)
+    case event(EventAction)
+}
+
+struct AppEnvironment {
+    var getCurrentUser: () -> Effect<String, Never>
+    var getCalendars: () -> Effect<[String], Never>
+    var getCalendarEvents: (_ calendarId: String) -> Effect<[Event], Never>
+    var createEvent: (String) -> Effect<Bool, Never>
+    var removeEvent:  (String, String) -> Effect<Bool, Never>
+    var logout: () -> Effect<Bool, Never>
+}
+
+/* App Environment */
+
+extension AppEnvironment {
+    func toSessionEnvironment() -> SessionEnvironment {
+        SessionEnvironment(getCurrentUser: getCurrentUserEffect)
+    }
+    
+    func toEventEnvironment() -> EventEnvironment {
+        EventEnvironment(getCalendarEvents: getCalendarEventsEffect, createEvent: createEventEffect, removeEvent: removeEventEffect)
+    }
+    
+    func toCalendarEnvironment() -> CalendarEnvironment {
+        CalendarEnvironment(getCalendars: getCalendarsEffect)
+    }
+}
+
+/* App Reducer combined with: Session, Reducer and Event */
+
+let appCombineReducer = Reducer<AppState, AppAction, AppEnvironment>
+    .combine(
+        sessionReducer.pullback(
+            state: \AppState.session,
+            action: /AppAction.session,
+            environment: { $0.toSessionEnvironment() }
+        ),
+        
+        calendarReducer.pullback(
+            state: \AppState.calendar,
+            action: /AppAction.calendar,
+            environment: { $0.toCalendarEnvironment() })
+        ,
+        eventReducer.pullback(
+            state: \AppState.event,
+            action: /AppAction.event,
+            environment: { $0.toEventEnvironment() }
+        )
+)

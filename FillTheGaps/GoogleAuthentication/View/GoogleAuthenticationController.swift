@@ -5,7 +5,7 @@ import GoogleAPIClientForREST
 import ComposableArchitecture
 
 class GoogleAuthenticationController: UIViewController {
-    let store: Store<AppState, AppAction>
+    let store: Store<SessionFeatureState, SessionAction>
     let clientId = "703057389515-3mihmq71h2fiv7ur72j9r3grakvii6bh.apps.googleusercontent.com"
     
     lazy var loginButton: UIButton = {
@@ -34,7 +34,7 @@ class GoogleAuthenticationController: UIViewController {
         return service
     }()
     
-    init(store: Store<AppState, AppAction>) {
+    init(store: Store<SessionFeatureState, SessionAction>) {
         self.store = store
         super.init(nibName: nil, bundle: nil)
     }
@@ -82,7 +82,7 @@ extension GoogleAuthenticationController: GIDSignInDelegate {
             return
         }
   
-        ViewStore(store).send(.authenticatedWithGoogleResponse(user.profile.name))
+        ViewStore(store).send(.responseAuthenticatedWithGoogle(user.profile.name))
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

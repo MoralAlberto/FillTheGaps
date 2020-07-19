@@ -12,7 +12,7 @@ struct CalendarFeatureState: Equatable {
 
 enum CalendarAction: Equatable {
     case getCalendars
-    case listOfCalendarsResponse([String])
+    case responseListOfCalendars([String])
     case selectedCalendar(calendarId: String)
     case dismissSheetInCalendarView
 }
@@ -25,11 +25,11 @@ let calendarReducer = Reducer<CalendarFeatureState, CalendarAction, CalendarEnvi
     switch action {
     case .getCalendars:
         return environment.getCalendars()
-            .map(CalendarAction.listOfCalendarsResponse)
+            .map(CalendarAction.responseListOfCalendars)
             .receive(on: DispatchQueue.main)
             .eraseToEffect()
                 
-    case .listOfCalendarsResponse(let calendars):
+    case .responseListOfCalendars(let calendars):
         state.calendars = calendars
         
     case .selectedCalendar(calendarId: let calendarId):

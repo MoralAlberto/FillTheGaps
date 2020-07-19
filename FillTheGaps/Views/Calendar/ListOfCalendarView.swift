@@ -32,7 +32,11 @@ struct ListOfCalendarsView: View {
     var body: some View {
             Group {
                 if viewStore.user.isEmpty {
-                    GoogleAuthenticationControllerWrapper(store: store)
+                    GoogleAuthenticationControllerWrapper(
+                        store: store.scope(
+                            state: \.session,
+                            action: AppAction.session)
+                    )
                 } else {
                     List {
                         ForEach(viewStore.calendars, id: \.self) { calendar in
