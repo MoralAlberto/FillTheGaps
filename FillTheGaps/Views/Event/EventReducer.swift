@@ -1,8 +1,9 @@
 import ComposableArchitecture
+import Foundation
 
 struct EventFeatureState: Equatable {
     var currentCalendar: String
-    var events: [Event]
+    var events: [CustomEventCalendar]
     var dateOfNewEvent: Date
     var numberOfHoursNewEvent: Int = 4
 }
@@ -24,6 +25,11 @@ struct EventEnvironment {
     var removeEvent: (String, String) -> Effect<Bool, Never>
 }
 
+struct CustomEventCalendar: Equatable, Hashable, Identifiable {
+    var id: String
+    var events: [Event]
+}
+
 let eventReducer = Reducer<EventFeatureState, EventAction, EventEnvironment> { state, action, environment in
     func getCalendarEvents() -> Effect<EventAction, Never> {
         return environment.getCalendarEvents(state.currentCalendar)
@@ -37,7 +43,21 @@ let eventReducer = Reducer<EventFeatureState, EventAction, EventEnvironment> { s
         return getCalendarEvents()
         
     case .responseEventsInCalendar(let result):
-        state.events = result
+        
+        let calendar = Calendar.current
+        let grouped = Dictionary(grouping: result, by: { calendar.startOfDay(for: $0.start) })
+        let value = grouped.sorted { $0.key > $1.key }.reversed()
+        
+        let formattedEvents = value.map { date -> CustomEventCalendar in
+            let formattedDays = ["", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+            let day = Calendar.current.component(.weekday, from: date.key)
+            let arrayOfEvents = date.value.map { $0 }
+            return CustomEventCalendar(id: formattedDays[day], events: arrayOfEvents)
+        }
+        
+        state.events = formattedEvents
+        
+        print("Formatted Events \(formattedEvents)")
         
     case .createEventInCalendar(calendarId: let calendarId):
         

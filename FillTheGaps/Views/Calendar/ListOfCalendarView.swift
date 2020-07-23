@@ -8,7 +8,7 @@ enum CalendarViewSheet {
 struct ListOfCalendarsView: View {
     struct ViewState: Equatable {
         let user: String
-        let calendars: [Calendar]
+        let calendars: [CalendarModel]
         let currentCalendar: String
         let presentSheetInCalendarView: Bool
         let calendarViewSheet: CalendarViewSheet

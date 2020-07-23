@@ -5,7 +5,7 @@ import ComposableArchitecture
 struct ListOfEventsView: View {
     struct ViewState: Equatable {
         let currentCalendar: String
-        let events: [Event]
+        let events: [CustomEventCalendar]
         let dateOfNewEvent: Date
         let numberOfHoursNewEvent: Int
     }
@@ -27,13 +27,48 @@ struct ListOfEventsView: View {
         self.calendarId = calendarId
     }
     
+    let daysOfWeek = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
+    let events = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
+    let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    
     var body: some View {
         VStack {
             Text("List of Events")
                 .font(.system(size: 18, weight: .bold))
                 .underline()
                 .padding()
-            List(viewStore.events, id: \.self) { event in
+            
+            HStack {
+                ForEach(days, id:\.self) { value in
+                    VStack {
+                        Text(value)
+                        List {
+                            ForEach(viewStore.events.filter({ $0.id == value }).flatMap { $0.events }) { value in
+                                
+                                Rectangle()
+                                    .fill(Color.red)
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                        }
+                    }//.addWeekendStyle(isWeekend: (value == "Sat" || value == "Sun"))
+                }
+            }
+            
+            List(viewStore.events.flatMap { $0.events }, id: \.self) { event in
                 HStack {
                     Text(event.name)
                     Spacer()
@@ -61,9 +96,9 @@ struct ListOfEventsView: View {
             }
             
             Spacer()
-            .onAppear {
-                viewStore.send(.onViewDidLoad(calendarId: calendarId))
-            }
+                .onAppear {
+                    viewStore.send(.onViewDidLoad(calendarId: calendarId))
+                }
         }
     }
 }
@@ -93,5 +128,21 @@ extension EventAction {
         case .numberOfHoursChanged(let numberOfHours):
             return .numberOfHoursChanged(numberOfHours: numberOfHours)
         }
+    }
+}
+
+struct ListOfEventsView_Previews: PreviewProvider {
+    static var previews: some View {
+        ListOfEventsView(
+            store: Store(
+                initialState: EventFeatureState(
+                    currentCalendar: "1",
+                    events: [],
+                    dateOfNewEvent: Date()),
+                reducer: eventReducer,
+                environment: EventEnvironment(getCalendarEvents: getCalendarEventsEffect,
+                                              createEvent: createEventEffect,
+                                              removeEvent: removeEventEffect)),
+            calendarId: "1")
     }
 }
