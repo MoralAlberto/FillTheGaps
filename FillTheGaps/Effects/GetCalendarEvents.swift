@@ -4,7 +4,7 @@ import GoogleSignIn
 import Combine
 import GoogleAPIClientForREST
 
-func getCalendarEventsEffect(calendarId: String) -> Effect<[Event], Never> {
+func getCalendarEventsEffect(calendarId: String) -> Effect<[EventModel], Never> {
     return Future { callback in
         let service = GTLRCalendarService()
         service.shouldFetchNextPages = true
@@ -18,8 +18,9 @@ func getCalendarEventsEffect(calendarId: String) -> Effect<[Event], Never> {
         
         service.authorizer = authentication.fetcherAuthorizer()
     
-        let startDateTime = GTLRDateTime(date: Foundation.Calendar.current.startOfDay(for: Date()))
-        let endDateTime = GTLRDateTime(date: Date().addingTimeInterval(60*60*24*7))
+        let date = Date()
+        let startDateTime = GTLRDateTime(date: Calendar.current.startOfDay(for: date.startOfWeek!))
+        let endDateTime = GTLRDateTime(date: Calendar.current.startOfDay(for: date.endOfWeek!))
         
         let eventsListQuery = GTLRCalendarQuery_EventsList.query(withCalendarId: calendarId)
         eventsListQuery.timeMin = startDateTime
@@ -30,7 +31,7 @@ func getCalendarEventsEffect(calendarId: String) -> Effect<[Event], Never> {
                 return
             }
             
-            let events = items.compactMap(Event.init(googleEvent:))
+            let events = items.compactMap(EventModel.init(googleEvent:))
             callback(.success(events))
         })
     }.eraseToEffect()

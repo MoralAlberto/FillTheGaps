@@ -77,7 +77,7 @@ enum AppAction {
 struct AppEnvironment {
     var getCurrentUser: () -> Effect<String, Never>
     var getCalendars: () -> Effect<[CalendarModel], Never>
-    var getCalendarEvents: (_ calendarId: String) -> Effect<[Event], Never>
+    var getCalendarEvents: (_ calendarId: String) -> Effect<[EventModel], Never>
     var createEvent: (String, Date, Int) -> Effect<Bool, Never>
     var removeEvent:  (String, String) -> Effect<Bool, Never>
     var logout: () -> Effect<Bool, Never>

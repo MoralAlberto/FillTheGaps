@@ -31,8 +31,10 @@
 		F4D5D43424C2CCC8000A97B7 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43324C2CCC8000A97B7 /* Logout.swift */; };
 		F4D5D43624C2CDC6000A97B7 /* GetCalendarEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43524C2CDC6000A97B7 /* GetCalendarEvents.swift */; };
 		F4D5D43824C2CF83000A97B7 /* ListOfEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */; };
-		F4D5D43B24C2DC40000A97B7 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43A24C2DC40000A97B7 /* Event.swift */; };
+		F4D5D43B24C2DC40000A97B7 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43A24C2DC40000A97B7 /* EventModel.swift */; };
 		F4D5D43D24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5D43C24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift */; };
+		F4E6CEC024CB3FC500302CCD /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6CEBF24CB3FC500302CCD /* Date+Extensions.swift */; };
+		F4E6CEC224CB47C900302CCD /* TwitterClientId.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6CEC124CB47C900302CCD /* TwitterClientId.swift */; };
 		F4ED7AE324C4BA0B00D708A3 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ED7AE224C4BA0B00D708A3 /* CalendarModel.swift */; };
 		F4ED7AE724C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ED7AE624C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift */; };
 		F4F867EE24CA0E4B007A31A1 /* Weekend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F867ED24CA0E4B007A31A1 /* Weekend.swift */; };
@@ -105,8 +107,10 @@
 		F4D5D43324C2CCC8000A97B7 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		F4D5D43524C2CDC6000A97B7 /* GetCalendarEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCalendarEvents.swift; sourceTree = "<group>"; };
 		F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEventsView.swift; sourceTree = "<group>"; };
-		F4D5D43A24C2DC40000A97B7 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		F4D5D43A24C2DC40000A97B7 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		F4D5D43C24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+GTLRCalendar_Event.swift"; sourceTree = "<group>"; };
+		F4E6CEBF24CB3FC500302CCD /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		F4E6CEC124CB47C900302CCD /* TwitterClientId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClientId.swift; sourceTree = "<group>"; };
 		F4ED7AE224C4BA0B00D708A3 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		F4ED7AE624C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GTLRCalendar_CalendarListEntry.swift"; sourceTree = "<group>"; };
 		F4F867ED24CA0E4B007A31A1 /* Weekend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekend.swift; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 				F4763BAC24C312C200E50528 /* CreateEvent.swift */,
 				F4763BAF24C31A1500E50528 /* RemoveEvent.swift */,
 				F4D5D43324C2CCC8000A97B7 /* Logout.swift */,
+				F4E6CEBE24CB3FB600302CCD /* Helpers */,
 			);
 			path = Effects;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 		F49FDF2F24C21A2A00DFC570 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F4E6CEC124CB47C900302CCD /* TwitterClientId.swift */,
 				F49FDF2C24C218CF00DFC570 /* GoogleAuthenticationController.swift */,
 				F49FDF2A24C2186A00DFC570 /* GoogleAuthenticationControllerWrapper.swift */,
 				F483212424C223CC0016D9FC /* FillTheGaps-Bridging-Header.h */,
@@ -297,10 +303,18 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F4E6CEBE24CB3FB600302CCD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F4E6CEBF24CB3FC500302CCD /* Date+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F4ED7AE424C4BA1800D708A3 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				F4D5D43A24C2DC40000A97B7 /* Event.swift */,
+				F4D5D43A24C2DC40000A97B7 /* EventModel.swift */,
 				F4D5D43C24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift */,
 			);
 			path = Event;
@@ -598,8 +612,10 @@
 			files = (
 				F49FDF2D24C218CF00DFC570 /* GoogleAuthenticationController.swift in Sources */,
 				F4ED7AE324C4BA0B00D708A3 /* CalendarModel.swift in Sources */,
+				F4E6CEC024CB3FC500302CCD /* Date+Extensions.swift in Sources */,
 				F42B882124C4314000AB8B75 /* SessionReducer.swift in Sources */,
-				F4D5D43B24C2DC40000A97B7 /* Event.swift in Sources */,
+				F4D5D43B24C2DC40000A97B7 /* EventModel.swift in Sources */,
+				F4E6CEC224CB47C900302CCD /* TwitterClientId.swift in Sources */,
 				F4763BAD24C312C200E50528 /* CreateEvent.swift in Sources */,
 				F4ED7AE724C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift in Sources */,
 				F4D5D43D24C2DC98000A97B7 /* Event+GTLRCalendar_Event.swift in Sources */,

@@ -1,7 +1,7 @@
 import Foundation
 import GoogleAPIClientForREST
 
-extension Event {
+extension EventModel {
     init(googleEvent: GTLRCalendar_Event) {
         self.id = googleEvent.identifier ?? ""
         self.name = googleEvent.summary ?? "No Name"

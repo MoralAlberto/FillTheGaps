@@ -8,6 +8,15 @@ struct ListOfEventsView: View {
         let events: [CustomEventCalendar]
         let dateOfNewEvent: Date
         let numberOfHoursNewEvent: Int
+        
+        func eventsBy(day: String) -> [EventModel] {
+            events.filter { $0.id == day }
+                  .flatMap { $0.events }
+        }
+        
+        func allEvents() -> [EventModel] {
+            events.flatMap { $0.events }
+        }
     }
     
     enum Action {
@@ -27,53 +36,52 @@ struct ListOfEventsView: View {
         self.calendarId = calendarId
     }
     
-    let daysOfWeek = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-    
-    let events = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-    
-    let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Text("List of Events")
                 .font(.system(size: 18, weight: .bold))
                 .underline()
                 .padding()
             
             HStack {
-                ForEach(days, id:\.self) { value in
+                ForEach(viewStore.state.events, id:\.self) { value in
                     VStack {
-                        Text(value)
+                        if value.isToday {
+                            Text(value.id)
+                                .font(.system(size: 16, weight: .bold))
+                                .underline()
+                        } else {
+                            Text(value.id)
+                                .font(.system(size: 16, weight: .regular))
+                        }
+                        
                         List {
-                            ForEach(viewStore.events.filter({ $0.id == value }).flatMap { $0.events }) { value in
-                                
-                                Rectangle()
-                                    .fill(Color.red)
-                                    .aspectRatio(contentMode: .fit)
+                            ForEach(viewStore.state.eventsBy(day: value.id)) { value in
+                                Text(value.name)
+                                    .font(.system(size: 8, weight: .regular, design: .default))
+                                    .listRowBackground(Color.green)
                             }
                         }
-                    }//.addWeekendStyle(isWeekend: (value == "Sat" || value == "Sun"))
+                    }
                 }
-            }
+            }.padding(.bottom, 4)
             
-            List(viewStore.events.flatMap { $0.events }, id: \.self) { event in
+            List(viewStore.state.allEvents(), id: \.self) { event in
                 HStack {
-                    Text(event.name)
+                    HStack {
+                        Text("\(event.startDateFormatted)")
+                            .font(.system(size: 12, weight: .bold, design: .default))
+                            .foregroundColor(Color.gray)
+                            .padding(.trailing, 12)
+                        
+                        Text(event.name)
+                            .font(.system(size: 16, weight: .bold, design: .default))
+                    }
                     Spacer()
-                    Button("Remove") {
+                    Button {
                         viewStore.send(.tapOnRemoveEvent(eventId: event.id, calendarId: calendarId))
+                    } label: {
+                        Image(systemName: "trash")
                     }
                 }
             }
@@ -88,17 +96,21 @@ struct ListOfEventsView: View {
                         in: 1...8)
                 HStack {
                     Spacer()
-                    Button("Create Event") {
+                    Button {
                         viewStore.send(.tapOnCreateEventInCalendar(calendarId: calendarId))
+                    } label: {
+                        HStack {
+                            Image(systemName: "plus.circle.fill")
+                            Text("Create Event")
+                        }
                     }
                     Spacer()
                 }.padding()
+            }.onAppear {
+                viewStore.send(.onViewDidLoad(calendarId: calendarId))
             }
             
             Spacer()
-                .onAppear {
-                    viewStore.send(.onViewDidLoad(calendarId: calendarId))
-                }
         }
     }
 }
