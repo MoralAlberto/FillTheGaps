@@ -3,8 +3,8 @@ import ComposableArchitecture
 
 struct CalendarFeatureState: Equatable {
     var user: String
-    var events: [Event]
-    var calendars: [String]
+    var events: [CustomEventCalendar]
+    var calendars: [CalendarModel]
     var currentCalendar: String
     var presentSheetInCalendarView: Bool
     var calendarViewSheet: CalendarViewSheet
@@ -12,13 +12,13 @@ struct CalendarFeatureState: Equatable {
 
 enum CalendarAction: Equatable {
     case getCalendars
-    case responseListOfCalendars([String])
+    case responseListOfCalendars([CalendarModel])
     case selectedCalendar(calendarId: String)
     case dismissSheetInCalendarView
 }
 
 struct CalendarEnvironment {
-    var getCalendars: () -> Effect<[String], Never>
+    var getCalendars: () -> Effect<[CalendarModel], Never>
 }
 
 let calendarReducer = Reducer<CalendarFeatureState, CalendarAction, CalendarEnvironment> { state, action, environment in

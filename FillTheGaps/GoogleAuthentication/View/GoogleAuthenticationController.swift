@@ -6,7 +6,7 @@ import ComposableArchitecture
 
 class GoogleAuthenticationController: UIViewController {
     let store: Store<SessionFeatureState, SessionAction>
-    let clientId = "703057389515-3mihmq71h2fiv7ur72j9r3grakvii6bh.apps.googleusercontent.com"
+    let clientId = TwitterClient.clientId.rawValue
     
     lazy var loginButton: UIButton = {
         let button = UIButton()

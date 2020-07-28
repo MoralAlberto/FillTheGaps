@@ -6,10 +6,13 @@ import ComposableArchitecture
 struct AppState: Equatable {
     var user: String = ""
     var currentCalendar = ""
-    var calendars: [String] = []
-    var events: [Event] = []
+    var calendars: [CalendarModel] = []
+    var events: [CustomEventCalendar] = []
     var presentSheetInCalendarView: Bool = false
     var calendarViewSheet: CalendarViewSheet = .listOfEvents
+    var dateOfNewEvent: Date = Date()
+    var numberOfHoursNewEvent: Int = 4
+    var titleOfNewEvent: String = ""
 }
 
 extension AppState {
@@ -28,12 +31,18 @@ extension AppState {
     var event: EventFeatureState {
         get {
             .init(currentCalendar: self.currentCalendar,
-                              events: self.events)
+                  events: self.events,
+                  dateOfNewEvent: self.dateOfNewEvent,
+                  numberOfHoursNewEvent: self.numberOfHoursNewEvent,
+                  titleOfNewEvent: self.titleOfNewEvent)
         }
         
         set {
             self.currentCalendar = newValue.currentCalendar
             self.events = newValue.events
+            self.dateOfNewEvent = newValue.dateOfNewEvent
+            self.numberOfHoursNewEvent = newValue.numberOfHoursNewEvent
+            self.titleOfNewEvent = newValue.titleOfNewEvent
         }
     }
 }
@@ -70,9 +79,9 @@ enum AppAction {
 
 struct AppEnvironment {
     var getCurrentUser: () -> Effect<String, Never>
-    var getCalendars: () -> Effect<[String], Never>
-    var getCalendarEvents: (_ calendarId: String) -> Effect<[Event], Never>
-    var createEvent: (String) -> Effect<Bool, Never>
+    var getCalendars: () -> Effect<[CalendarModel], Never>
+    var getCalendarEvents: (_ calendarId: String) -> Effect<[EventModel], Never>
+    var createEvent: (String, String, Date, Int) -> Effect<Bool, Never>
     var removeEvent:  (String, String) -> Effect<Bool, Never>
     var logout: () -> Effect<Bool, Never>
 }
@@ -85,7 +94,9 @@ extension AppEnvironment {
     }
     
     func toEventEnvironment() -> EventEnvironment {
-        EventEnvironment(getCalendarEvents: getCalendarEventsEffect, createEvent: createEventEffect, removeEvent: removeEventEffect)
+        EventEnvironment(getCalendarEvents: getCalendarEventsEffect,
+                         createEvent: createEventEffect,
+                         removeEvent: removeEventEffect)
     }
     
     func toCalendarEnvironment() -> CalendarEnvironment {
