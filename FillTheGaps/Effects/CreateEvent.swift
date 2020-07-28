@@ -4,7 +4,10 @@ import GoogleSignIn
 import Combine
 import GoogleAPIClientForREST
 
-func createEventEffect(inCalendarId calendarId: String, startDate: Date, duration: Int) -> Effect<Bool, Never> {
+func createEventEffect(inCalendarId calendarId: String,
+                       title: String,
+                       startDate: Date,
+                       duration: Int) -> Effect<Bool, Never> {
     return Future { callback in
         let service = GTLRCalendarService()
         service.shouldFetchNextPages = true
@@ -19,7 +22,7 @@ func createEventEffect(inCalendarId calendarId: String, startDate: Date, duratio
         service.authorizer = authentication.fetcherAuthorizer()
   
         let event = GTLRCalendar_Event()
-        event.summary = "Fill the Gap"
+        event.summary = title
         event.descriptionProperty = "Description Example 🤓"
         event.visibility = "confidential"
         

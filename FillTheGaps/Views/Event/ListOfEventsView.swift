@@ -8,6 +8,7 @@ struct ListOfEventsView: View {
         let events: [CustomEventCalendar]
         let dateOfNewEvent: Date
         let numberOfHoursNewEvent: Int
+        let titleOfNewEvent: String
         
         func eventsBy(day: String) -> [EventModel] {
             events.filter { $0.id == day }
@@ -25,6 +26,7 @@ struct ListOfEventsView: View {
         case tapOnRemoveEvent(eventId: String, calendarId: String)
         case dateOfNewEventChanged(Date)
         case numberOfHoursChanged(Int)
+        case titleOfNewEventChanged(String)
         
     }
     
@@ -87,6 +89,9 @@ struct ListOfEventsView: View {
             }
             
             Form {
+                TextField("Event Title",
+                          text: viewStore.binding(get: \.titleOfNewEvent,
+                                                  send: Action.titleOfNewEventChanged))
                 DatePicker("Choose date",
                            selection: viewStore.binding(get: \.dateOfNewEvent,
                                                         send: Action.dateOfNewEventChanged))
@@ -122,7 +127,8 @@ extension EventFeatureState {
         .init(currentCalendar: currentCalendar,
               events: events,
               dateOfNewEvent: dateOfNewEvent,
-              numberOfHoursNewEvent: numberOfHoursNewEvent)
+              numberOfHoursNewEvent: numberOfHoursNewEvent,
+              titleOfNewEvent: titleOfNewEvent)
     }
 }
 
@@ -139,6 +145,8 @@ extension EventAction {
             return .dateOfNewEventChanged(date: date)
         case .numberOfHoursChanged(let numberOfHours):
             return .numberOfHoursChanged(numberOfHours: numberOfHours)
+        case .titleOfNewEventChanged(let title):
+            return .titleOfNewEventChanged(title: title)
         }
     }
 }
@@ -150,7 +158,8 @@ struct ListOfEventsView_Previews: PreviewProvider {
                 initialState: EventFeatureState(
                     currentCalendar: "1",
                     events: [],
-                    dateOfNewEvent: Date()),
+                    dateOfNewEvent: Date(),
+                    titleOfNewEvent: ""),
                 reducer: eventReducer,
                 environment: EventEnvironment(getCalendarEvents: getCalendarEventsEffect,
                                               createEvent: createEventEffect,

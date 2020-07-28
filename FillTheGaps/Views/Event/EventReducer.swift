@@ -6,6 +6,7 @@ struct EventFeatureState: Equatable {
     var events: [CustomEventCalendar]
     var dateOfNewEvent: Date
     var numberOfHoursNewEvent: Int = 4
+    var titleOfNewEvent: String
 }
 
 enum EventAction: Equatable {
@@ -17,11 +18,12 @@ enum EventAction: Equatable {
     case responseRemoveEvent(Bool)
     case dateOfNewEventChanged(date: Date)
     case numberOfHoursChanged(numberOfHours: Int)
+    case titleOfNewEventChanged(title: String)
 }
 
 struct EventEnvironment {
     var getCalendarEvents: (_ calendarId: String) -> Effect<[EventModel], Never>
-    var createEvent: (String, Date, Int) -> Effect<Bool, Never>
+    var createEvent: (String, String, Date, Int) -> Effect<Bool, Never>
     var removeEvent: (String, String) -> Effect<Bool, Never>
 }
 
@@ -44,35 +46,13 @@ let eventReducer = Reducer<EventFeatureState, EventAction, EventEnvironment> { s
         return getCalendarEvents()
         
     case .responseEventsInCalendar(let result):
+        state.events = formatAllEvents(events: result)
         
-        let calendar = Calendar.current
-        let grouped = Dictionary(grouping: result, by: { calendar.startOfDay(for: $0.start) })
-        let value = grouped.sorted { $0.key > $1.key }.reversed()
-        
-        // Today
-        let today = Date()
-        let currentWeekday = calendar.component(.weekday, from: today)
-        let currentDay = calendar.component(.day, from: today)
-        
-        let formattedEvents = value.map { date -> CustomEventCalendar in
-            let formattedDays = ["", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-            let weekday = calendar.component(.weekday, from: date.key)
-            let day = calendar.component(.day, from: date.key)
-            let arrayOfEvents = date.value.map { $0 }
-            
-            if currentWeekday == weekday, currentDay == day {
-                return CustomEventCalendar(id: "\(day)\n\(formattedDays[weekday])",
-                                           events: arrayOfEvents,
-                                           isToday: true)
-            }
-            return CustomEventCalendar(id: "\(day)\n\(formattedDays[weekday])", events: arrayOfEvents)
-        }
-        
-        state.events = formattedEvents
-    
     case .createEventInCalendar(calendarId: let calendarId):
-        
-        return environment.createEvent(calendarId, state.dateOfNewEvent, state.numberOfHoursNewEvent)
+        return environment.createEvent(calendarId,
+                                       state.titleOfNewEvent,
+                                       state.dateOfNewEvent,
+                                       state.numberOfHoursNewEvent)
             .map(EventAction.responseAddEvent)
             .receive(on: DispatchQueue.main)
             .eraseToEffect()
@@ -94,6 +74,36 @@ let eventReducer = Reducer<EventFeatureState, EventAction, EventEnvironment> { s
         
     case .numberOfHoursChanged(numberOfHours: let numberOfHours):
         state.numberOfHoursNewEvent = numberOfHours
+    
+    case .titleOfNewEventChanged(title: let title):
+        state.titleOfNewEvent = title
     }
+    
     return .none
+}
+
+func formatAllEvents(events: [EventModel]) -> [CustomEventCalendar] {
+    let calendar = Calendar.current
+            
+    let groupedByDay = Dictionary(grouping: events, by: { calendar.startOfDay(for: $0.start) })
+    let value = groupedByDay.sorted { $0.key > $1.key }.reversed()
+    
+    // Today
+    let today = Date()
+    let currentWeekday = calendar.component(.weekday, from: today)
+    let currentDay = calendar.component(.day, from: today)
+    
+    return value.map { date -> CustomEventCalendar in
+        let formattedDays = ["", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        let weekday = calendar.component(.weekday, from: date.key)
+        let day = calendar.component(.day, from: date.key)
+        let arrayOfEvents = date.value.map { $0 }
+        
+        if currentWeekday == weekday, currentDay == day {
+            return CustomEventCalendar(id: "\(day)\n\(formattedDays[weekday])",
+                                       events: arrayOfEvents,
+                                       isToday: true)
+        }
+        return CustomEventCalendar(id: "\(day)\n\(formattedDays[weekday])", events: arrayOfEvents)
+    }
 }

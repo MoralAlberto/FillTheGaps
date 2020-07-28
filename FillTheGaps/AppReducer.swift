@@ -12,6 +12,7 @@ struct AppState: Equatable {
     var calendarViewSheet: CalendarViewSheet = .listOfEvents
     var dateOfNewEvent: Date = Date()
     var numberOfHoursNewEvent: Int = 4
+    var titleOfNewEvent: String = ""
 }
 
 extension AppState {
@@ -32,7 +33,8 @@ extension AppState {
             .init(currentCalendar: self.currentCalendar,
                   events: self.events,
                   dateOfNewEvent: self.dateOfNewEvent,
-                  numberOfHoursNewEvent: self.numberOfHoursNewEvent)
+                  numberOfHoursNewEvent: self.numberOfHoursNewEvent,
+                  titleOfNewEvent: self.titleOfNewEvent)
         }
         
         set {
@@ -40,6 +42,7 @@ extension AppState {
             self.events = newValue.events
             self.dateOfNewEvent = newValue.dateOfNewEvent
             self.numberOfHoursNewEvent = newValue.numberOfHoursNewEvent
+            self.titleOfNewEvent = newValue.titleOfNewEvent
         }
     }
 }
@@ -78,7 +81,7 @@ struct AppEnvironment {
     var getCurrentUser: () -> Effect<String, Never>
     var getCalendars: () -> Effect<[CalendarModel], Never>
     var getCalendarEvents: (_ calendarId: String) -> Effect<[EventModel], Never>
-    var createEvent: (String, Date, Int) -> Effect<Bool, Never>
+    var createEvent: (String, String, Date, Int) -> Effect<Bool, Never>
     var removeEvent:  (String, String) -> Effect<Bool, Never>
     var logout: () -> Effect<Bool, Never>
 }
@@ -91,7 +94,9 @@ extension AppEnvironment {
     }
     
     func toEventEnvironment() -> EventEnvironment {
-        EventEnvironment(getCalendarEvents: getCalendarEventsEffect, createEvent: createEventEffect, removeEvent: removeEventEffect)
+        EventEnvironment(getCalendarEvents: getCalendarEventsEffect,
+                         createEvent: createEventEffect,
+                         removeEvent: removeEventEffect)
     }
     
     func toCalendarEnvironment() -> CalendarEnvironment {

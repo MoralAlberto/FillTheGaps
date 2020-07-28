@@ -37,7 +37,6 @@
 		F4E6CEC224CB47C900302CCD /* TwitterClientId.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6CEC124CB47C900302CCD /* TwitterClientId.swift */; };
 		F4ED7AE324C4BA0B00D708A3 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ED7AE224C4BA0B00D708A3 /* CalendarModel.swift */; };
 		F4ED7AE724C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ED7AE624C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift */; };
-		F4F867EE24CA0E4B007A31A1 /* Weekend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F867ED24CA0E4B007A31A1 /* Weekend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +112,6 @@
 		F4E6CEC124CB47C900302CCD /* TwitterClientId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClientId.swift; sourceTree = "<group>"; };
 		F4ED7AE224C4BA0B00D708A3 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		F4ED7AE624C4BA6400D708A3 /* Calendar+GTLRCalendar_CalendarListEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GTLRCalendar_CalendarListEntry.swift"; sourceTree = "<group>"; };
-		F4F867ED24CA0E4B007A31A1 /* Weekend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +194,6 @@
 			children = (
 				F4D5D43724C2CF83000A97B7 /* ListOfEventsView.swift */,
 				F4763BB124C3262200E50528 /* EventReducer.swift */,
-				F4F867ED24CA0E4B007A31A1 /* Weekend.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -631,7 +628,6 @@
 				F49FDEF724C2113200DFC570 /* FillTheGapsApp.swift in Sources */,
 				F4D5D43824C2CF83000A97B7 /* ListOfEventsView.swift in Sources */,
 				F4D5D43624C2CDC6000A97B7 /* GetCalendarEvents.swift in Sources */,
-				F4F867EE24CA0E4B007A31A1 /* Weekend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
