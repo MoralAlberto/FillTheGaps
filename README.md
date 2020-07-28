@@ -5,7 +5,7 @@ Sometimes I forget to schedule my day (or week) to work on technical tasks, chec
 
 This demo app is compiling with Xcode 12 beta 3. The app uses Google API to retrieve some information about your calendar and events. You can use it directly (or if you want, you can update the client id, BUT you will have to create a new one in your google developer account).
 
-[Screenshot](resources/screenshot.png)
+![Screenshot](resources/screenshot.png)
 
 ## Architecture
 
